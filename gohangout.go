@@ -2,6 +2,10 @@ package main
 
 import (
 	"flag"
+	_ "github.com/childe/gohangout/filter"
+	"github.com/childe/gohangout/input"
+	"github.com/golang/glog"
+	"github.com/json-iterator/go"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
@@ -10,10 +14,6 @@ import (
 	"runtime/pprof"
 	"sync"
 	"syscall"
-
-	"github.com/childe/gohangout/input"
-	"github.com/golang/glog"
-	"github.com/json-iterator/go"
 )
 
 var json = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -62,8 +62,8 @@ func buildPluginLink(config map[string]interface{}) []*input.InputBox {
 	}
 	return boxes
 }
-
 func main() {
+
 	if options.pprof {
 		go func() {
 			http.ListenAndServe(options.pprofAddr, nil)

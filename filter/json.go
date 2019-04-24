@@ -2,10 +2,9 @@ package filter
 
 import (
 	"encoding/json"
+	"github.com/golang/glog"
 	"reflect"
 	"strings"
-
-	"github.com/golang/glog"
 )
 
 type JsonFilter struct {

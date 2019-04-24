@@ -160,12 +160,16 @@ func BuildFilter(filterType string, config map[interface{}]interface{}) Filter {
 	case "LinkMetric":
 		f := NewLinkMetricFilter(config)
 		return f
+	case "JsonField":
+		f := NewJsonFiledFilter(config)
+		return f
 	case "LinkStatsMetric":
 		f := NewLinkStatsMetricFilter(config)
 		return f
 		//case "Filters":
 		//f := NewFiltersFilter(config, nextFilter, outputs)
 		//return f
+
 	}
 	glog.Fatalf("could not build %s filter plugin", filterType)
 	return nil
